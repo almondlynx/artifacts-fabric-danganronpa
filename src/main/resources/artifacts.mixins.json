@@ -1,9 +1,9 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "artifacts.mixin.mixins",
+  "package": "artifacts2.mixin.mixins",
   "compatibilityLevel": "JAVA_8",
-  "plugin": "artifacts.mixin.ArtifactsMixinPlugin",
+  "plugin": "artifacts2.mixin.ArtifactsMixinPlugin",
   "mixins": [
     "accessors.DamageSourceAccessor",
     "accessors.ItemEntityAccessor",
@@ -17,6 +17,7 @@
   ],
   "client": [
     "client.render.PlayerRendererMixin",
+    "client.render.PlayerModelMixin",
     "item.umbrella.client.HumanoidModelMixin",
     "item.umbrella.client.ItemRendererMixin",
     "item.umbrella.client.LivingEntityRendererMixin"

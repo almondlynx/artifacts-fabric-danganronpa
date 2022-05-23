@@ -19,13 +19,13 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "artifacts.Artifacts"
+      "artifacts2.Artifacts"
     ],
     "client": [
-      "artifacts.ArtifactsClient"
+      "artifacts2.ArtifactsClient"
     ],
     "modmenu": [
-      "artifacts.integrations.ModMenuConfig"
+      "artifacts2.integrations.ModMenuConfig"
     ]
   },
   "mixins": [

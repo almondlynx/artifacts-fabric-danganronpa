@@ -46,7 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.2.0] - 2021-04-08
 ### Changed
-- You can now equip multiple of the same artifacts (e.g. 2 power gloves)
+- You can now equip multiple of the same artifacts2 (e.g. 2 power gloves)
   - In most cases this will not amplify the effects over just one
 
 ### Fixed
@@ -91,7 +91,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Slightly reduced Mimic knockback resistance
 - Reduced Digging Claws mining level
 - Slightly reduced Digging Claws mining speed
-- Dropped artifacts are now fire and lavaproof
+- Dropped artifacts2 are now fire and lavaproof
 - Tweaks to loot generation
 - Removed dependency on Auto Config
 - Cloth Config is no longer bundled

@@ -1,5 +1,10 @@
 {
   "trinkets.slot.feet.shoes": "Shoes",
   "trinkets.slot.head.hat": "Hat",
-  "trinkets.slot.offhand.gloves": "Gloves"
+  "trinkets.slot.offhand.gloves": "Gloves",
+
+    "itemGroup.artifacts_2.items_group": "Character customization",
+
+  "item.artifacts_2.skirt": "Skirt",
+  "item.`artifacts_2.hair": "Hair"
 }
