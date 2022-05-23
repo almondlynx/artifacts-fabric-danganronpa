@@ -41,8 +41,6 @@ import net.minecraft.world.item.SpawnEggItem;
 @SuppressWarnings("unused")
 public class Items {
 
-	// Misc
-	public static final Item MIMIC_SPAWN_EGG = register("mimic_spawn_egg", new SpawnEggItem(Entities.MIMIC, 0x805113, 0x212121, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 	public static final Item UMBRELLA = register("umbrella", new UmbrellaItem());
 	public static final Item WHOOPEE_CUSHION = register("whoopee_cushion", new WhoopeeCushionItem());
 

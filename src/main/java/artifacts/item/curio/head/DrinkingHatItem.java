@@ -18,19 +18,4 @@ public class DrinkingHatItem extends TrinketArtifactItem {
         super(Slot.HAT);
     }
 
-    @Override
-	public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flags) {
-		if (Artifacts.CONFIG.general.showTooltips) {
-			if (this == Items.NOVELTY_DRINKING_HAT) {
-				// Novelty drinking hat description is the same as plastic, but with an extra line appended
-				appendTooltipDescription(tooltip, Items.PLASTIC_DRINKING_HAT.getDescriptionId() + ".tooltip");
-			}
-		}
-		super.appendHoverText(stack, world, tooltip, flags);
-	}
-
-	@Override
-	protected SoundInfo getEquipSound() {
-		return new SoundInfo(SoundEvents.BOTTLE_FILL);
-	}
 }

@@ -13,10 +13,6 @@ public final class ModConfig extends PartitioningSerializer.GlobalData {
 	@ConfigEntry.Gui.TransitiveObject
 	public General general = new General();
 
-	@ConfigEntry.Category("worldgen")
-	@ConfigEntry.Gui.TransitiveObject
-	public WorldGen worldgen = new WorldGen();
-
 	private ModConfig() {
 	}
 
@@ -38,41 +34,4 @@ public final class ModConfig extends PartitioningSerializer.GlobalData {
 		}
 	}
 
-	@Config(name = "worldgen")
-	public static final class WorldGen implements ConfigData {
-		@ConfigEntry.Gui.Tooltip(count = 6)
-		public float artifactRarity = 1;
-		@ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-		public Campsite campsite = new Campsite();
-
-		private WorldGen() {
-		}
-
-		public static final class Campsite {
-			@ConfigEntry.Gui.RequiresRestart
-			@ConfigEntry.Gui.Tooltip(count = 2)
-			@ConfigEntry.BoundedDiscrete(max = 100)
-			public int genChance = 8;
-
-			@ConfigEntry.Gui.Tooltip(count = 2)
-			@ConfigEntry.BoundedDiscrete(max = 100)
-			public int mimicChance = 30;
-
-			@ConfigEntry.Gui.Tooltip(count = 2)
-			@ConfigEntry.BoundedDiscrete(max = 100)
-			public int oreChance = 25;
-
-			// TODO: this should probably be higher so we don't break any bedrock
-			@ConfigEntry.Gui.Tooltip
-			@ConfigEntry.BoundedDiscrete(max = 256)
-			public int minY = 0;
-
-			@ConfigEntry.Gui.Tooltip
-			@ConfigEntry.BoundedDiscrete(max = 256)
-			public int maxY = 45;
-
-			private Campsite() {
-			}
-		}
-	}
 }

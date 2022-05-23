@@ -1,7 +1,5 @@
 package artifacts.mixin.mixins.item.umbrella;
 
-import artifacts.components.SwimAbilityComponent;
-import artifacts.init.Components;
 import artifacts.item.UmbrellaItem;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffect;
@@ -30,7 +28,7 @@ public abstract class LivingEntityMixin extends Entity {
 		boolean isFalling = !this.isOnGround() && this.getDeltaMovement().y <= 0.0D;
 		boolean heldMainHand = UmbrellaItem.getHeldStatusForHand((LivingEntity) (Object) this, InteractionHand.MAIN_HAND) == UmbrellaItem.HeldStatus.HELD_UP;
 		boolean heldOffHand = UmbrellaItem.getHeldStatusForHand((LivingEntity) (Object) this, InteractionHand.OFF_HAND) == UmbrellaItem.HeldStatus.HELD_UP;
-		boolean isInWater = this.isInWater() && !Components.SWIM_ABILITIES.maybeGet(this).map(SwimAbilityComponent::isSinking).orElse(false);
+		boolean isInWater = this.isInWater();
 
 		if ((heldMainHand || heldOffHand) && isFalling && !isInWater && !this.hasEffect(MobEffects.SLOW_FALLING) ) {
 			gravity -= 0.07;

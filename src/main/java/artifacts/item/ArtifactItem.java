@@ -19,31 +19,11 @@ import java.util.List;
 public abstract class ArtifactItem extends Item {
 
 	public ArtifactItem(Properties properties) {
-		super(properties.stacksTo(1).tab(Artifacts.ITEM_GROUP).rarity(Rarity.RARE).fireResistant());
+		super(properties.stacksTo(1).tab(Artifacts.ITEM_GROUP).rarity(Rarity.RARE));
 	}
 
 	public ArtifactItem() {
 		this(new Properties());
-	}
-
-	@Override
-	@Environment(EnvType.CLIENT)
-	public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flags) {
-		if (Artifacts.CONFIG.general.showTooltips) {
-			appendTooltipDescription(tooltip, this.getDescriptionId() + ".tooltip");
-		}
-	}
-
-	public Component getREITooltip() {
-		return new TextComponent(Language.getInstance().getOrDefault(this.getDescriptionId() + ".tooltip").replace("\n", " "));
-	}
-
-	protected void appendTooltipDescription(List<Component> tooltip, String translKey) {
-		String[] lines = String.format(Language.getInstance().getOrDefault(translKey), getTooltipDescriptionArguments().toArray()).split("\n");
-
-		for (String line : lines) {
-			tooltip.add(new TextComponent(line).withStyle(ChatFormatting.GRAY));
-		}
 	}
 
 	protected List<String> getTooltipDescriptionArguments() {

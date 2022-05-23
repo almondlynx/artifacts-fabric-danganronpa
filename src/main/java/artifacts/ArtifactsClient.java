@@ -1,9 +1,7 @@
 package artifacts;
 
 import artifacts.client.render.ArtifactFeatureRenderer;
-import artifacts.client.render.entity.MimicRenderer;
 import artifacts.client.render.trinket.CurioRenderers;
-import artifacts.init.Entities;
 import artifacts.init.Items;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -24,9 +22,6 @@ public class ArtifactsClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		CurioRenderers.setupCurioRenderers();
-
-		// Mimic EntityRenderer
-		EntityRendererRegistry.INSTANCE.register(Entities.MIMIC, (dispatcher, context) -> new MimicRenderer(dispatcher));
 
 		// Held Umbrella model
 		ModelLoadingRegistry.INSTANCE.registerModelProvider((manager, out) -> out.accept(UMBRELLA_HELD_MODEL));

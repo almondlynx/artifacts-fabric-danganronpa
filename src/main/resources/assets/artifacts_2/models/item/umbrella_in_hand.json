@@ -1,0 +1,11 @@
+{
+  "parent": "artifacts_2:item/umbrella_base",
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "artifacts_2:item/umbrella_blocking"
+    }
+  ]
+}
