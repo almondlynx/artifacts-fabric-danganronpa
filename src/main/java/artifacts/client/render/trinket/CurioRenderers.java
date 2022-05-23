@@ -1,17 +1,11 @@
 package artifacts.client.render.trinket;
 
-import artifacts.client.render.trinket.model.BeltModel;
 import artifacts.client.render.trinket.model.HandsModel;
 import artifacts.client.render.trinket.model.HeadModel;
 import artifacts.client.render.trinket.model.LegsModel;
 import artifacts.client.render.trinket.model.NecklaceModel;
 import artifacts.client.render.trinket.model.ScarfModel;
-import artifacts.client.render.trinket.renderer.BeltCurioRenderer;
-import artifacts.client.render.trinket.renderer.CurioRenderer;
-import artifacts.client.render.trinket.renderer.GloveCurioRenderer;
-import artifacts.client.render.trinket.renderer.GlowingCurioRenderer;
-import artifacts.client.render.trinket.renderer.GlowingGloveCurioRenderer;
-import artifacts.client.render.trinket.renderer.SimpleCurioRenderer;
+import artifacts.client.render.trinket.renderer.*;
 import artifacts.init.Items;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.Item;
@@ -40,31 +34,15 @@ public class CurioRenderers {
     }
 
     public static void setupCurioRenderers() {
+        renderers.put(Items.SKIRT, new BodyCurioRenderer());
+
         // head
-        renderers.put(Items.PLASTIC_DRINKING_HAT, new SimpleCurioRenderer("drinking_hat/plastic_drinking_hat", HeadModel.drinkingHat()));
-        renderers.put(Items.NOVELTY_DRINKING_HAT, new SimpleCurioRenderer("drinking_hat/novelty_drinking_hat", HeadModel.drinkingHat()));
+        renderers.put(Items.PLASTIC_DRINKING_HAT, new HeadCurioRenderer());
+        renderers.put(Items.NOVELTY_DRINKING_HAT, new BodyCurioRenderer());
         renderers.put(Items.SNORKEL, new SimpleCurioRenderer("snorkel", HeadModel.snorkel()));
         renderers.put(Items.NIGHT_VISION_GOGGLES, new GlowingCurioRenderer("night_vision_goggles", HeadModel.nightVisionGoggles()));
         renderers.put(Items.SUPERSTITIOUS_HAT, new SimpleCurioRenderer("superstitious_hat", HeadModel.superstitiousHat()));
         renderers.put(Items.VILLAGER_HAT, new SimpleCurioRenderer("villager_hat", HeadModel.villagerHat()));
-
-        // necklace
-        renderers.put(Items.LUCKY_SCARF, new SimpleCurioRenderer("scarf/lucky_scarf", ScarfModel.scarf(RenderType::entityCutoutNoCull)));
-        renderers.put(Items.SCARF_OF_INVISIBILITY, new SimpleCurioRenderer("scarf/scarf_of_invisibility", ScarfModel.scarf(RenderType::entityTranslucent)));
-        renderers.put(Items.CROSS_NECKLACE, new SimpleCurioRenderer("cross_necklace", NecklaceModel.crossNecklace()));
-        renderers.put(Items.PANIC_NECKLACE, new SimpleCurioRenderer("panic_necklace", NecklaceModel.panicNecklace()));
-        renderers.put(Items.SHOCK_PENDANT, new SimpleCurioRenderer("pendant/shock_pendant", NecklaceModel.pendant()));
-        renderers.put(Items.FLAME_PENDANT, new SimpleCurioRenderer("pendant/flame_pendant", NecklaceModel.pendant()));
-        renderers.put(Items.THORN_PENDANT, new SimpleCurioRenderer("pendant/thorn_pendant", NecklaceModel.pendant()));
-        renderers.put(Items.CHARM_OF_SINKING, new SimpleCurioRenderer("charm_of_sinking", NecklaceModel.charmOfSinking()));
-
-        // belt
-        renderers.put(Items.CLOUD_IN_A_BOTTLE, new BeltCurioRenderer("cloud_in_a_bottle", BeltModel.cloudInABottle()));
-        renderers.put(Items.OBSIDIAN_SKULL, new BeltCurioRenderer("obsidian_skull", BeltModel.obsidianSkull()));
-        renderers.put(Items.ANTIDOTE_VESSEL, new BeltCurioRenderer("antidote_vessel", BeltModel.antidoteVessel()));
-        renderers.put(Items.UNIVERSAL_ATTRACTOR, new BeltCurioRenderer("universal_attractor", BeltModel.universalAttractor()));
-        renderers.put(Items.CRYSTAL_HEART, new BeltCurioRenderer("crystal_heart", BeltModel.crystalHeart()));
-        renderers.put(Items.HELIUM_FLAMINGO, new SimpleCurioRenderer("helium_flamingo", BeltModel.heliumFlamingo()));
 
         // hands
         renderers.put(Items.DIGGING_CLAWS, new GloveCurioRenderer("claws/digging_claws", "claws/digging_claws", HandsModel::claws));
@@ -83,7 +61,5 @@ public class CurioRenderers {
         renderers.put(Items.STEADFAST_SPIKES, new SimpleCurioRenderer("steadfast_spikes", LegsModel.steadfastSpikes()));
         renderers.put(Items.FLIPPERS, new SimpleCurioRenderer("flippers", LegsModel.flippers()));
 
-        // curio
-        renderers.put(Items.WHOOPEE_CUSHION, new SimpleCurioRenderer("whoopee_cushion", HeadModel.whoopeeCushion()));
     }
 }

@@ -33,11 +33,7 @@ public class Artifacts implements ModInitializer {
 
 		// Trinkets setup
 		Slot.registerAll();
-
-		// Force loading init classes
-		// Entities is loaded by items, loot tables can load lazily (no registration)
-		Items.ANTIDOTE_VESSEL.toString();
-		LOGGER.info("[Artifacts 2] Finished initialization");
+	LOGGER.info("[Artifacts 2] Finished initialization");
 	}
 
 	public static ResourceLocation id(String path) {

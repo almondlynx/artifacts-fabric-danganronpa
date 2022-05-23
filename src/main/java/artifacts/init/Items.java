@@ -1,16 +1,9 @@
 package artifacts.init;
 
 import artifacts.Artifacts;
-import artifacts.item.EverlastingFoodItem;
 import artifacts.item.UmbrellaItem;
 import artifacts.item.curio.TrinketArtifactItem;
-import artifacts.item.curio.WhoopeeCushionItem;
-import artifacts.item.curio.belt.AntidoteVesselItem;
-import artifacts.item.curio.belt.CloudInABottleItem;
-import artifacts.item.curio.belt.CrystalHeartItem;
-import artifacts.item.curio.belt.HeliumFlamingoItem;
-import artifacts.item.curio.belt.ObsidianSkullItem;
-import artifacts.item.curio.belt.UniversalAttractorItem;
+import artifacts.item.curio.body.SkirtItem;
 import artifacts.item.curio.feet.AquaDashersItem;
 import artifacts.item.curio.feet.BunnyHoppersItem;
 import artifacts.item.curio.feet.KittySlippersItem;
@@ -25,28 +18,16 @@ import artifacts.item.curio.hands.VampiricGloveItem;
 import artifacts.item.curio.head.DrinkingHatItem;
 import artifacts.item.curio.head.NightVisionGogglesItem;
 import artifacts.item.curio.head.SnorkelItem;
-import artifacts.item.curio.necklace.CharmOfSinkingItem;
-import artifacts.item.curio.necklace.CrossNecklaceItem;
-import artifacts.item.curio.necklace.FlamePendantItem;
-import artifacts.item.curio.necklace.PanicNecklaceItem;
-import artifacts.item.curio.necklace.ScarfOfInvisibilityItem;
-import artifacts.item.curio.necklace.ShockPendantItem;
-import artifacts.item.curio.necklace.ThornPendantItem;
 import net.minecraft.core.Registry;
 import net.minecraft.world.food.Foods;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SpawnEggItem;
 
 @SuppressWarnings("unused")
 public class Items {
 
-	public static final Item UMBRELLA = register("umbrella", new UmbrellaItem());
-	public static final Item WHOOPEE_CUSHION = register("whoopee_cushion", new WhoopeeCushionItem());
+	public static final Item SKIRT = register("celes_skirt", new SkirtItem());
 
-	// Food
-	public static final Item EVERLASTING_BEEF = register("everlasting_beef", new EverlastingFoodItem(Foods.BEEF));
-	public static final Item ETERNAL_STEAK = register("eternal_steak", new EverlastingFoodItem(Foods.COOKED_BEEF));
+	public static final Item UMBRELLA = register("umbrella", new UmbrellaItem());
 
 	// Head
 	public static final Item PLASTIC_DRINKING_HAT = register("plastic_drinking_hat", new DrinkingHatItem());
@@ -55,24 +36,6 @@ public class Items {
 	public static final Item NIGHT_VISION_GOGGLES = register("night_vision_goggles", new NightVisionGogglesItem());
 	public static final Item VILLAGER_HAT = register("villager_hat", new TrinketArtifactItem(Slot.HAT));
 	public static final Item SUPERSTITIOUS_HAT = register("superstitious_hat", new TrinketArtifactItem(Slot.HAT));
-
-	// Necklace
-	public static final Item LUCKY_SCARF = register("lucky_scarf", new TrinketArtifactItem(Slot.NECKLACE));
-	public static final Item SCARF_OF_INVISIBILITY = register("scarf_of_invisibility", new ScarfOfInvisibilityItem());
-	public static final Item CROSS_NECKLACE = register("cross_necklace", new CrossNecklaceItem());
-	public static final Item PANIC_NECKLACE = register("panic_necklace", new PanicNecklaceItem());
-	public static final Item SHOCK_PENDANT = register("shock_pendant", new ShockPendantItem());
-	public static final Item FLAME_PENDANT = register("flame_pendant", new FlamePendantItem());
-	public static final Item THORN_PENDANT = register("thorn_pendant", new ThornPendantItem());
-	public static final Item CHARM_OF_SINKING = register("charm_of_sinking", new CharmOfSinkingItem());
-
-	// Belt
-	public static final Item OBSIDIAN_SKULL = register("obsidian_skull", new ObsidianSkullItem());
-	public static final Item ANTIDOTE_VESSEL = register("antidote_vessel", new AntidoteVesselItem());
-	public static final Item UNIVERSAL_ATTRACTOR = register("universal_attractor", new UniversalAttractorItem());
-	public static final Item CRYSTAL_HEART = register("crystal_heart", new CrystalHeartItem());
-	public static final Item CLOUD_IN_A_BOTTLE = register("cloud_in_a_bottle", new CloudInABottleItem());
-	public static final Item HELIUM_FLAMINGO = register("helium_flamingo", new HeliumFlamingoItem());
 
 	// Hands
 	public static final Item DIGGING_CLAWS = register("digging_claws", new DiggingClawsItem());
