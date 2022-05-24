@@ -54,8 +54,7 @@ public final class TrinketsHelper {
 			for (int i = 0; i < inventory.getContainerSize(); i++) {
 				ItemStack stack = inventory.getItem(i);
 
-				if (!stack.isEmpty() && stack.getItem() instanceof TrinketArtifactItem
-						&& (areEffectsEnabled(stack) || ignoreEffectsDisabled)) {
+				if (!stack.isEmpty() && stack.getItem() instanceof TrinketArtifactItem) {
 					stacks.add(stack);
 				}
 			}
@@ -64,16 +63,4 @@ public final class TrinketsHelper {
 		return stacks;
 	}
 
-	public static boolean areEffectsEnabled(ItemStack stack) {
-		if (!(stack.getItem() instanceof TrinketArtifactItem)) {
-			return false;
-		}
-
-		CompoundTag tag = stack.getTagElement("Artifacts");
-		if (tag == null || !tag.contains("Status", 1)) {
-			return true;
-		}
-
-		return TrinketArtifactItem.ArtifactStatus.values()[tag.getByte("Status")].hasEffects();
-	}
 }

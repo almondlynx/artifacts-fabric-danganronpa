@@ -56,85 +56,13 @@ public class TrinketArtifactItem extends ArtifactItem implements Trinket {
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level level, Player user, InteractionHand hand) {
-		// Cycle artifact status when sneak right-clicking
-		if (user.isShiftKeyDown()) {
-			ItemStack stack = user.getItemInHand(hand);
-			CompoundTag tag = stack.getOrCreateTagElement("Artifacts");
-			tag.putByte("Status", (byte) ArtifactStatus.nextIndex(tag.getByte("Status")));
-			stack.addTagElement("Artifacts", tag);
-
-			if (level.isClientSide()) {
-				// Show enabled/disabled message above hotbar
-				ChatFormatting enabledColor = TrinketsHelper.areEffectsEnabled(stack) ? ChatFormatting.GREEN : ChatFormatting.RED;
-				Component enabledText = new TranslatableComponent(getEffectsEnabledLanguageKey(stack)).withStyle(enabledColor);
-				Minecraft.getInstance().gui.setOverlayMessage(enabledText, false);
-			}
-
-			return InteractionResultHolder.success(stack);
-		}
-
-		InteractionResultHolder<ItemStack> actionResult = Trinket.equipTrinket(user, hand);
-
-		// Play right click equip sound
-		if (actionResult.getResult().consumesAction()) {
-			SoundInfo sound = this.getEquipSound();
-			user.playSound(sound.getSoundEvent(), sound.getVolume(), sound.getPitch());
-		}
-
-		return actionResult;
-	}
-
-	@Override
 	public void tick(Player player, ItemStack stack) {
-		if (TrinketsHelper.areEffectsEnabled(stack)) {
 			curioTick(player, stack);
-		}
 	}
 
 	protected void curioTick(LivingEntity livingEntity, ItemStack stack) {
 	}
 
-	@Override
-	public final Multimap<Attribute, AttributeModifier> getTrinketModifiers(String group, String slot, UUID uuid, ItemStack stack) {
-		if (TrinketsHelper.areEffectsEnabled(stack)) {
-			return this.applyModifiers(group, slot, uuid, stack);
-		}
-		return HashMultimap.create();
-	}
-
-	protected Multimap<Attribute, AttributeModifier> applyModifiers(String group, String slot, UUID uuid, ItemStack stack) {
-		return HashMultimap.create();
-	}
-
-	@Override
-	public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flags) {
-		super.appendHoverText(stack, world, tooltip, flags);
-		MutableComponent enabled = new TranslatableComponent(getEffectsEnabledLanguageKey(stack)).withStyle(ChatFormatting.GOLD);
-		Component togglekeybind = new TranslatableComponent("artifacts.trinket.togglekeybind").withStyle(ChatFormatting.GRAY);
-		tooltip.add(enabled.append(" ").append(togglekeybind));
-	}
-
-	/**
-	 * @return The {@link SoundEvent} to play when the artifact is right-click equipped
-	 */
-	protected SoundInfo getEquipSound() {
-		return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC);
-	}
-
-	/**
-	 * @return An extra {@link SoundEvent} to play when an entity wearing this artifact is hurt
-	 */
-	protected SoundEvent getExtraHurtSound() {
-		return null;
-	}
-
-	/**
-	 * Used to give a Trinket a permanent status effect while wearing it.
-	 * The StatusEffectInstance is applied every 15 ticks so a duration greater than that is required.
-	 *
-	 * @return The {@link MobEffectInstance} to be applied while wearing this artifact
-	 */
 	public MobEffectInstance getPermanentEffect() {
 		return null;
 	}
@@ -145,77 +73,5 @@ public class TrinketArtifactItem extends ArtifactItem implements Trinket {
 		// TODO: support slot index (used by belt renderer)
 		CurioRenderers.getRenderer(this).render(slot, 0, matrices, buffer, light, player, limbAngle,
 				limbDistance, tickDelta, animationProgress, headYaw, headPitch, stack);
-	}
-
-	public static void addModifier(AttributeInstance instance, AttributeModifier modifier) {
-		if (!instance.hasModifier(modifier)) {
-			instance.addTransientModifier(modifier);
-		}
-	}
-
-	public static void removeModifier(AttributeInstance instance, AttributeModifier modifier) {
-		if (instance.hasModifier(modifier)) {
-			instance.removeModifier(modifier);
-		}
-	}
-
-	private static String getEffectsEnabledLanguageKey(ItemStack stack) {
-		return TrinketsHelper.areEffectsEnabled(stack) ? "artifacts.trinket.effectsenabled" : "artifacts.trinket.effectsdisabled";
-	}
-
-	public enum ArtifactStatus {
-		ALL_ENABLED(true, true),
-		COSMETIC_ONLY(false, true);
-		// EFFECTS_ONLY(true, false);
-
-		private final boolean hasEffects;
-		private final boolean hasCosmetics;
-
-		ArtifactStatus(boolean hasEffects, boolean hasCosmetics) {
-			this.hasEffects = hasEffects;
-			this.hasCosmetics = hasCosmetics;
-		}
-
-		public boolean hasEffects() {
-			return hasEffects;
-		}
-
-		public boolean hasCosmetics() {
-			return hasCosmetics;
-		}
-
-		public static int nextIndex(int index) {
-			return index >= values().length - 1 ? 0 : index + 1;
-		}
-	}
-
-	// From Curios
-	// TODO: Java 17 Record
-	protected static final class SoundInfo {
-		final SoundEvent soundEvent;
-		final float volume;
-		final float pitch;
-
-		public SoundInfo(SoundEvent soundEvent) {
-			this(soundEvent, 1f, 1f);
-		}
-
-		public SoundInfo(SoundEvent soundEvent, float volume, float pitch) {
-			this.soundEvent = soundEvent;
-			this.volume = volume;
-			this.pitch = pitch;
-		}
-
-		public SoundEvent getSoundEvent() {
-			return this.soundEvent;
-		}
-
-		public float getVolume() {
-			return this.volume;
-		}
-
-		public float getPitch() {
-			return this.pitch;
-		}
 	}
 }

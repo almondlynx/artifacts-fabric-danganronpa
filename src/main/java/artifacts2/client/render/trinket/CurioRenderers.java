@@ -19,7 +19,7 @@ public class CurioRenderers {
 
     public static void setupCurioRenderers() {
         renderers.put(Items.SKIRT, new SkirtCurioRenderer());
+        renderers.put(Items.BACKPACK, new BodyCurioRenderer());
         renderers.put(Items.HAIR, new HeadCurioRenderer());
-
     }
 }
