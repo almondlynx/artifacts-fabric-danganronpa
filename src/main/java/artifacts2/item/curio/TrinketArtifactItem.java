@@ -147,16 +147,6 @@ public class TrinketArtifactItem extends ArtifactItem implements Trinket {
 				limbDistance, tickDelta, animationProgress, headYaw, headPitch, stack);
 	}
 
-	private void playExtraHurtSound(LivingEntity entity, float volume, float pitch) {
-		if (Artifacts.CONFIG.general.playExtraHurtSounds) {
-			SoundEvent hurtSound = getExtraHurtSound();
-
-			if (hurtSound != null && TrinketsHelper.isEquipped(this, entity, true)) {
-				entity.playSound(hurtSound, volume, pitch);
-			}
-		}
-	}
-
 	public static void addModifier(AttributeInstance instance, AttributeModifier modifier) {
 		if (!instance.hasModifier(modifier)) {
 			instance.addTransientModifier(modifier);

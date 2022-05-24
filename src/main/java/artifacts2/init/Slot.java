@@ -7,12 +7,10 @@ import dev.emi.trinkets.api.TrinketSlots;
 import net.minecraft.resources.ResourceLocation;
 
 public enum Slot {
+    WIG("wig", SlotGroups.HEAD, true),
     HAT("hat", SlotGroups.HEAD, true),
     NECKLACE(Slots.NECKLACE, SlotGroups.CHEST),
-    GLOVE_MAINHAND(Slots.GLOVES, SlotGroups.HAND),
-    GLOVE_OFFHAND(Slots.GLOVES, SlotGroups.OFFHAND),
-    BELT(Slots.BELT, SlotGroups.LEGS),
-    SHOES("shoes", SlotGroups.FEET, true);
+    BELT(Slots.BELT, SlotGroups.LEGS);
 
     private final String slotId;
     private final String groupId;

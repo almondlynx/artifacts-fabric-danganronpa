@@ -11,16 +11,10 @@
     "accessors.MobEffectAccessor",
     "accessors.ToolManagerImplAccessor",
     "accessors.ToolManagerImplEntryImplAccessor",
-    "item.umbrella.EntityMixin",
-    "item.umbrella.LivingEntityMixin",
     "util.DefaultedRegistryMixin"
   ],
   "client": [
-    "client.render.PlayerRendererMixin",
-    "client.render.PlayerModelMixin",
-    "item.umbrella.client.HumanoidModelMixin",
-    "item.umbrella.client.ItemRendererMixin",
-    "item.umbrella.client.LivingEntityRendererMixin"
+    "client.render.PlayerModelMixin"
   ],
   "injectors": {
     "defaultRequire": 1

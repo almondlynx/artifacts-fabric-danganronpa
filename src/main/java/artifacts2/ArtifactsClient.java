@@ -26,9 +26,6 @@ public class ArtifactsClient implements ClientModInitializer {
 		ModelLoadingRegistry.INSTANCE.registerModelProvider((manager, out) -> out.accept(UMBRELLA_HELD_MODEL));
 
 		// ModelPredicateProvider for rendering of umbrella blocking
-		FabricModelPredicateProviderRegistry.register(Items.UMBRELLA, new ResourceLocation("blocking"), (stack, world, entity)
-				-> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1 : 0);
-
 		LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper) -> {
 			if (entityRenderer instanceof PlayerRenderer) {
 				registrationHelper.register(new ArtifactFeatureRenderer((PlayerRenderer) entityRenderer));

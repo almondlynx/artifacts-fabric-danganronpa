@@ -23,9 +23,6 @@
     ],
     "client": [
       "artifacts2.ArtifactsClient"
-    ],
-    "modmenu": [
-      "artifacts2.integrations.ModMenuConfig"
     ]
   },
   "mixins": [

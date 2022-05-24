@@ -1,6 +1,12 @@
 {
   "trinkets.slot.feet.shoes": "Обувь",
   "trinkets.slot.head.hat": "Шапка",
-  "trinkets.slot.offhand.gloves": "Перчатки"
+  "trinkets.slot.head.wig": "Парик",
+
+  "itemGroup.artifacts_2.item_group": "Одежда",
+
+  "item.artifacts_2.skirt": "Юбка",
+  "item.artifacts_2.hair": "Волосы",
+  "item.artifacts_2.backpack": "Рюкзак"
 
 }

@@ -1,6 +1,5 @@
 package artifacts2;
 
-import artifacts2.config.ModConfig;
 import artifacts2.init.Items;
 import artifacts2.init.Slot;
 import me.shedaniel.autoconfig.AutoConfig;
@@ -22,18 +21,13 @@ public class Artifacts implements ModInitializer {
 			id("item_group"),
 			() -> new ItemStack(Items.HAIR)
 	);
-	public static ModConfig CONFIG;
 
 	@Override
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	public void onInitialize() {
-		// Config
-		Artifacts.CONFIG = AutoConfig.register(ModConfig.class,
-				PartitioningSerializer.wrap(Toml4jConfigSerializer::new)).getConfig();
-
 		// Trinkets setup
 		Slot.registerAll();
-	LOGGER.info("[Artifacts 2] Finished initialization");
+		LOGGER.info("[Artifacts 2] Finished initialization");
 	}
 
 	public static ResourceLocation id(String path) {
